@@ -6,16 +6,6 @@ import java.util.*;
 
 public class FileAnalyzer
 {
-   public static String longestWord(ArrayList<String> words)
-   {
-      String longest = "";
-      for (String word: words)
-      {
-         if (word.length() > longest.length())
-            longest = word;
-      }
-      return longest;
-   }
    public static void print (String var)
    {
        System.out.print(var);
