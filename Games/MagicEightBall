@@ -1,0 +1,91 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+/**
+ * Write a description of class Magic8Ball here.
+ * 
+ * @author (Rohan D'Souza) 
+ * @version (reformed version 2)
+ */
+public class Magic8BallReformedgh
+{   
+    public static String getInput(String question)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(question);
+        return sc.nextLine(); 
+    }
+    public static String magic(double start, double end, double random, String output)
+    {
+        if (random >= start && random <= end)
+        {
+            System.out.println(output);
+        }
+        return output;
+    }
+    public static void main(String [] args)
+    {
+        boolean value = true;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("This is The MAGIC 8 BALL!!!");
+        while (value == true)
+        {
+            //System.out.println("So... What is you question??");
+            //String input = sc.nextLine();
+            String question = getInput("So...What is your question?");
+            String[] stringArray = {    "It is certain!","It is decidedly so!","Without a doubt!",
+                                        "Yes definitely!", "You may rely on it!", "As I see it, yes!",
+                                        "Most likely!", "Outlook... good!", "Yes!",
+                                        "Signs point to yes!", "Reply hazy try again.", "Ask again later",
+                                        "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.",
+                                        "Don't count on it!", "My reply is no!", "My sources say no!",
+                                        "Outlook not so good!", "Very doubtful!"};
+            //int choose = (int) (Math.random() * stringArray.length);
+            String index = stringArray[(int) (Math.random() * stringArray.length)];
+            System.out.println(index);
+            /*
+            String first =      magic(0.00, 0.04, math, "It is certain!");
+            String second =     magic(0.05, 0.09, math, "It is decidedly so!");
+            String third =      magic(0.10, 0.14, math, "Without a doubt!");
+            String fourth =     magic(0.15, 0.19, math, "Yes definitely");
+            String fifth =      magic(0.20, 0.24, math, "You may rely on it!");
+            String sixth =      magic(0.25, 0.29, math, "As I see it, yes!");
+            String seventh =    magic(0.30, 0.34, math, "Most likely!");
+            String eigth =      magic(0.35, 0.39, math, "Outlook... good!");
+            String ninth =      magic(0.40, 0.44, math, "Yes!");
+            String tenth =      magic(0.45, 0.49, math, "Signs point to yes!");
+            String eleventh =   magic(0.50, 0.54, math, "Reply hazy try again.");
+            String twelfth =    magic(0.55, 0.59, math, "Ask again later.");
+            String thirteenth = magic(0.60, 0.64, math, "Better not tell you now.");
+            String fourteenth = magic(0.65, 0.69, math, "Cannot predict now.");
+            String fifteen=     magic(0.70, 0.74, math, "Concentrate and ask again.");
+            String sixteen =    magic(0.75, 0.79, math, "Don't count on it!");
+            String seventeen =  magic(0.80, 0.84, math, "My reply is no!");
+            String eighteen =   magic(0.85, 0.89, math, "My sources say no!");
+            String nineteen =   magic(0.90, 0.94, math, "Outlook not so good!");
+            String twenty =     magic(0.95, 1.00, math, "Very doubtful!");
+            */
+            boolean valueTwo = true;
+            while (valueTwo == true)
+            {
+                String restart = getInput("Do you want to ask another question?(yes or no)");
+                if (restart.equals("no"))
+                {
+                    System.out.println("aww man. Well... Bye!!");
+                    value = false;
+                    valueTwo = false;
+                }
+                else if (restart.equals("yes"))
+                {
+                    value = true;
+                    valueTwo = false;
+                }
+                else
+                {
+                    System.out.println("Why do you not follow simple directions. Just... Try again.");
+                    valueTwo = true;
+                }
+            }
+        }
+    }
+}
