@@ -1,5 +1,6 @@
 package com.company;
 import java.util.*;
+
 public class Main
 {
     public static void print(String string) {
@@ -43,9 +44,7 @@ public class Main
         }
     }
     public static boolean isThere (String[][] board, int row, int col) { //Checks if there is a number in that position
-        if (board[row][col].isEmpty()) //if is empty so should be false
-            return false;
-        return true;
+        return !board[row][col].isEmpty();
     }
     public static void suckyAI (String[][] board) {
         while (true) {
@@ -64,20 +63,39 @@ public class Main
         boolean win = false;
         String[][] board = new String[3][3];
         fillBoard(board);
-        showBoard(board);
-        int moveNum = 0;
-        while (moveNum<3) {
-            moveNum++;
-            println("This is your " + moveNum + "th try.");
-            print("Enter the column number of the desired position:");
-            int col = sc.nextInt();
-            print("Enter the row number of the desired position:");
-            int row = sc.nextInt();
-            board[row][col] = "x";
+        int numTry = 0;
+        while (numTry <3) {
+            System.out.println("This is how the board currently looks.");
             showBoard(board);
-            println("Now it is the computer's turn.");
-            suckyAI(board);
-            showBoard(board);
+            numTry++;
+            println("This is your " + numTry + "th try.");
+            try {
+                print("Enter the column number of the desired position:");
+                int col = sc.nextInt();
+                print("Enter the row number of the desired position:");
+                int row = sc.nextInt();
+                Exception IsThere = null;
+                if (isThere(board, row, col)) {
+                    IsThere = new Exception("IsAlreadyThereException");
+                    throw IsThere;
+                }
+                else{
+                    board[row][col] = "x";
+                    showBoard(board);
+                    println("Now it is the computer's turn.");
+                    suckyAI(board);
+                    showBoard(board);
+                }
+            }
+            catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("\n\nYour an idiot, the program threw and: "+e+".");
+                System.out.println("This time do it properly!!!!!");
+                numTry--;
+            }
+            catch (Exception e) {
+                System.out.print(e);
+                numTry--;
+            }
         }
     }
 }
