@@ -36,6 +36,9 @@ public class Main
         }
         System.out.println("\n   0   1   2\n");
     }
+    public static boolean decideWin (String[][] board) {
+        return true;
+    }
     public static void fillBoard (String[][] board) { //not needed for this program
         for (int row =0; row<board.length; row++) {
             for (int col =0; col<board.length; col++) {
@@ -74,9 +77,9 @@ public class Main
                 int col = sc.nextInt();
                 print("Enter the row number of the desired position:");
                 int row = sc.nextInt();
-                Exception IsThere = null;
+                //Exception IsThere = null;
                 if (isThere(board, row, col)) {
-                    IsThere = new Exception("IsAlreadyThereException");
+                    Exception IsThere = new Exception("IsAlreadyThereException");
                     throw IsThere;
                 }
                 else{
@@ -93,8 +96,11 @@ public class Main
                 numTry--;
             }
             catch (Exception e) {
-                System.out.print(e);
-                numTry--;
+                if (e.getMessage().equals("IsAlreadyThereException")) {
+                    System.out.println(e);
+                    numTry--;
+                }
+
             }
         }
     }
